@@ -2,6 +2,7 @@
 
 name=$1
 
-xvhdl $name.vhd
+xvhdl *.vhd
 xelab -s sim_$name $name -debug all
 xsim sim_$name -t sim.tcl
+#xsim sim_$name -t sim.tcl -gui
