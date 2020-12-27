@@ -22,3 +22,17 @@ begin
 		end if;
 	end process;
 end RTL;
+
+architecture RTL_NOVAR of toggle is
+	signal Q_tmp: std_logic := '0';
+begin
+	toggle_proc : process (CLK, EN)
+	begin
+		if rising_edge(CLK) then
+			if EN = '1' then
+				Q_tmp <= not Q_tmp;
+				Q <= Q_tmp;
+			end if;
+		end if;
+	end process;
+end RTL_NOVAR;
