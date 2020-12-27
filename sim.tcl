@@ -1,5 +1,9 @@
+set N 4
+
 add_force CLK {0} {1 500ps} -repeat_every 1ns
-add_force EN {0} {1 1000ns} {0 1500ns}
+for {set i 0} {$i < $N} {incr i} {
+	add_force EN[$i] {0} {1 1000ns} {0 1500ns}
+}
 
 open_vcd sim.vcd
 log_vcd -level 1 [get_objects CLK EN Q1 Q2]
