@@ -1,10 +1,8 @@
 #!/bin/bash
 
-name=$1
-
 vivado -mode batch -source gen_timing_netlist.tcl
 xvlog net_wrapper.v
-xelab -debug all $name -s sim_$name
-xsim sim_$name -t sim.tcl
+xelab -debug all -s sim_wrapper -L simprims_ver wrapper glbl
+xsim sim_wrapper -t sim.tcl
 
-#xsim sim_$name -t sim.tcl -gui
+#xsim sim_wrapper -t sim.tcl -gui
